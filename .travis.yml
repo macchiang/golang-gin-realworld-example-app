@@ -1,32 +1,16 @@
 language: go
 
 go:
+  - 1.10
   - master
 
-<<<<<<< HEAD
 go_import_path: github.com/macchiang/golang-gin-realworld-example-app
-=======
-go_import_path: github.com/wangzitian0/golang-gin-starter-kit
->>>>>>> 44e61e7 (keep master only)
 
 services:
   - sqlite3
 
 install:
-<<<<<<< HEAD
-<<<<<<< HEAD
   - go get -u github.com/macchiang/golang-gin-realworld-example-app
-=======
-  - go get -d -v github.com/kardianos/govendor
-  - go get -d -v github.com/pilu/fresh
-  - go get -d -v golang.org/x/crypto/...
-=======
-  - go get -u github.com/pilu/fresh
-  - go get -u golang.org/x/crypto/...
-  - go get -u github.com/kardianos/govendor
->>>>>>> 44e61e7 (keep master only)
-  - govendor sync
->>>>>>> 267bc06 (fix bug)
 script:
   #  - go test -v ./...
   - bash ./scripts/gofmt.sh
