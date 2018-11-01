@@ -5,17 +5,15 @@ go:
   - 1.8.x
   - master
 
-go_import_path: github.com/gothinkster/golang-gin-realworld-example-app
+go_import_path: github.com/macchiang/golang-gin-realworld-example-app
 
 services:
   - sqlite3
 
 install:
-  - go get -u github.com/gothinkster/golang-gin-realworld-example-app
-  - go get -u github.com/kardianos/govendor
-  - govendor sync
+  - go get -u github.com/macchiang/golang-gin-realworld-example-app
 script:
-#  - go test -v ./...
+  #  - go test -v ./...
   - bash ./scripts/gofmt.sh
   - bash ./scripts/coverage.sh
 

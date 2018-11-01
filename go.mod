@@ -1,4 +1,4 @@
-module github.com/gothinkster/golang-gin-realworld-example-app
+module github.com/macchiang/golang-gin-realworld-example-app
 
 go 1.15
 
