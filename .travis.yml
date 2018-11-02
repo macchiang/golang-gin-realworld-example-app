@@ -6,9 +6,9 @@ go:
 
 go_import_path: github.com/macchiang/golang-gin-realworld-example-app
 
-services:
-  - sqlite3
-
+before_install:
+  - apt-get update
+  - apt-get install -y build-essential
 install:
   - go get -u github.com/macchiang/golang-gin-realworld-example-app
 script:
