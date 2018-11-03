@@ -19,4 +19,5 @@ RUN go build
 FROM alpine
 WORKDIR /app
 COPY --from=build-env /go/src/github.com/wangzitian0/golang-gin-starter-kit/golang-gin-starter-kit /app/
+EXPOSE 8080
 ENTRYPOINT ./golang-gin-starter-kit
