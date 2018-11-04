@@ -34,7 +34,7 @@ steps:
       kubectl rollout status deployment $_PROJECT --namespace=$_NAMESPACE
 substitutions:
   _PROJECT: golang-gin
-  _REPO: us.gcr.io
+  _REPO: gcr.io
   _ZONE: us-central1-a
   _CLUSTER: standard-cluster-1
   _NODE_ENV: production
