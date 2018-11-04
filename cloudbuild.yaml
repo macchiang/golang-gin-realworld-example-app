@@ -37,5 +37,4 @@ substitutions:
   _REPO: gcr.io
   _ZONE: us-central1-a
   _CLUSTER: standard-cluster-1
-  _NODE_ENV: production
   _NAMESPACE: default
