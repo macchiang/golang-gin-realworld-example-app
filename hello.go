@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/jinzhu/gorm"
 	"github.com/gothinkster/golang-gin-realworld-example-app/articles"
 	"github.com/gothinkster/golang-gin-realworld-example-app/common"
 	"github.com/gothinkster/golang-gin-realworld-example-app/users"
+	"github.com/jinzhu/gorm"
 )
 
 func Migrate(db *gorm.DB) {
@@ -27,7 +28,6 @@ func main() {
 	defer db.Close()
 
 	r := gin.Default()
-
 	v1 := r.Group("/api")
 	users.UsersRegister(v1.Group("/users"))
 	v1.Use(users.AuthMiddleware(false))
@@ -69,5 +69,15 @@ func main() {
 	//}).First(&userAA)
 	//fmt.Println(userAA)
 
+	r.Use(Cors())
 	r.Run() // listen and serve on 0.0.0.0:8080
+}
+
+func Cors() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+		c.JSON(http.StatusOK, struct{}{})
+		c.Next()
+	}
 }
