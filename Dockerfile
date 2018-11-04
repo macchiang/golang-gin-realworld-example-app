@@ -7,12 +7,13 @@ RUN set -eux; \
     go get -u github.com/pilu/fresh; \
     go get -u golang.org/x/crypto/... ;
 # apk del .build-deps;
-ADD . /go/src/github.com/wangzitian0/golang-gin-starter-kit
+ADD ./vendor /go/src/github.com/wangzitian0/golang-gin-starter-kit/vendor
 ENV GOPATH /go
 ENV GOROOT /usr/local/go
 WORKDIR /go/src/github.com/wangzitian0/golang-gin-starter-kit
 RUN govendor sync;
 RUN govendor add +external
+COPY . /go/src/github.com/wangzitian0/golang-gin-starter-kit
 RUN go build
 
 # final stage
