@@ -1,0 +1,12 @@
+version: '3'
+services:
+  backend:
+    image: golang-gin:latest
+    ports:
+      - "8080:8080"
+  web:
+    image: react-redux:latest
+    ports:
+      - "4100:4100"
+    depends_on:
+      - backend
