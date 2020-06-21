@@ -14,11 +14,11 @@ WORKDIR /go/src/github.com/wangzitian0/golang-gin-starter-kit
 RUN govendor sync;
 RUN govendor add +external
 COPY . /go/src/github.com/wangzitian0/golang-gin-starter-kit
-RUN go build
+RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags="-extldflags -static -s -w" -a -installsuffix cgo
 
 # final stage
-FROM alpine
+FROM gcr.io/distroless/base 
 WORKDIR /app
 COPY --from=build-env /go/src/github.com/wangzitian0/golang-gin-starter-kit/golang-gin-starter-kit /app/
 EXPOSE 8080
-ENTRYPOINT ./golang-gin-starter-kit
+ENTRYPOINT ["./golang-gin-starter-kit"]
