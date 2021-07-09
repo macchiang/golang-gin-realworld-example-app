@@ -15,7 +15,7 @@ spec:
     app: golang-gin
     tier: backend
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: golang-gin
@@ -93,7 +93,7 @@ spec:
     app: react-redux
     tier: frontend
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: react-redux
