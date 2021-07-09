@@ -1,22 +1,21 @@
 language: go
+dist: bionic
 sudo: required
-services:
-  - docker
 go:
-  - 1.10
-  - master
+  - 1.15
+env:
+  - GO111MODULE=on
 
-go_import_path: github.com/macchiang/golang-gin-realworld-example-app
+go_import_path: github.com/gothinkster/golang-gin-realworld-example-app
 
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y build-essential
 install:
-  - go get -u github.com/macchiang/golang-gin-realworld-example-app
+  - go mod download
+  # - go get -u github.com/gothinkster/golang-gin-realworld-example-app
 script:
-  #  - go test -v ./...
-  - bash ./scripts/gofmt.sh
-  - bash ./scripts/coverage.sh
+  - go test -v ./...
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
